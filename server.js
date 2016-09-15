@@ -15,7 +15,7 @@ app.post('/speak', function (req, res, next) {
 });
 
 //start a server on port 80 and log its start to our console
-var server = app.listen(7388, function () {
+var server = app.listen(process.env.PORT || 80, function () {
   var port = server.address().port;
   console.log('Example app listening on port ', port);
 });
