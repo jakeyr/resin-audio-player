@@ -16,6 +16,9 @@ WORKDIR /usr/src/app
 # Copies the package.json first for better cache on later pushes
 COPY package.json package.json
 
+# install the alsa config to set volume level
+COPY asound.state /var/lib/alsa/asound.state
+
 # install the text-to-speech library
 RUN apt-get update && apt-get install -y \
   alsa-utils \
@@ -23,9 +26,6 @@ RUN apt-get update && apt-get install -y \
   festvox-kallpc16k \
   festival && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# set the volume to a reasonable level
-RUN amixer cset numid=1 -- 0
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
