@@ -20,6 +20,7 @@ COPY package.json package.json
 RUN apt-get update && apt-get install -y \
   alsa-utils \
   libasound2-dev \
+  festvox-kallpc16k \
   festival 
 
 # This install npm dependencies on the resin.io build server,
