@@ -27,6 +27,6 @@
     "express": "*",
     "say": "*",
     "body-parser": "*",
-    "play" : "*"
+    "play" : "Marak/play.js"
   }
 }
