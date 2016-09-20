@@ -13,9 +13,6 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 # Defines our working directory in container
 WORKDIR /usr/src/app
 
-# Copies the package.json first for better cache on later pushes
-COPY package.json package.json
-
 # install the text-to-speech library
 RUN apt-get update && apt-get install -y \
   alsa-utils \
@@ -23,6 +20,9 @@ RUN apt-get update && apt-get install -y \
   festvox-kallpc16k \
   festival && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copies the package.json first for better cache on later pushes
+COPY package.json package.json
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
