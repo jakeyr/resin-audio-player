@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
   libasound2-dev \
   festvox-kallpc16k \
   festival && \
+  mpg321 && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copies the package.json first for better cache on later pushes
