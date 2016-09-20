@@ -27,6 +27,6 @@
     "express": "*",
     "say": "*",
     "body-parser": "*",
-    "play" : "*"
+    "node-aplay" : "*"
   }
 }
