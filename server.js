@@ -4,7 +4,7 @@ var say        = require('say');
 var bodyParser = require('body-parser');
 var fs         = require('fs');
 var crypto     = require('crypto');
-var play       = require('play');
+var play       = require('play').Play();
 
 var app = express();
 
