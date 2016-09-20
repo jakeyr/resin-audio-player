@@ -4,7 +4,7 @@ var say        = require('say');
 var bodyParser = require('body-parser');
 var fs         = require('fs');
 var crypto     = require('crypto');
-var play       = require('node-aplay');
+var play       = require('play');
 
 var app = express();
 
@@ -25,14 +25,14 @@ app.post('/play', function (req, res, next) {
   fs.exists(fileName, function(exists) {
   	if (exists) {
   	  console.log("Playing local cached file " + fileName);
-  	  new play(fileName).play();
+  	  play.sound(fileName);
   	} else {
 	  console.log("Downloading to " + fileName);
 	  var file = fs.createWriteStream(fileName);
 	  var request = http.get(req.body.url, function(response) {
   		response.pipe(file);
 	  	response.on('end', function () {
-		  new play(fileName).play();
+	      play.sound(fileName);
 	  	});
   	  });
   	}
