@@ -20,7 +20,7 @@ app.post('/speak', function (req, res, next) {
 app.post('/play', function (req, res, next) {
   console.log("Playing " + req.body.url);
 
-  var fileName = "/tmp/" + crypto.createHash('md5').update(req.body.url).digest("hex") + ".wav";
+  var fileName = "/tmp/" + crypto.createHash('md5').update(req.body.url).digest("hex") + "." + (req.body.ext || "mp3");
 
   fs.exists(fileName, function(exists) {
   	if (exists) {
